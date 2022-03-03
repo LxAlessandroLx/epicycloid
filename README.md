@@ -1,4 +1,4 @@
-# Epicicloyd
+# Epicycloid
 A simple C++ program to draw epicycloids written using the SFML framework for rendering
 
 ### Commands
