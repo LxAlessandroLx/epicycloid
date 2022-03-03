@@ -18,7 +18,7 @@ Program::Program() : currentPoint(0), jumpSize(2)
 void Program::initWindow()
 {
     settings.antialiasingLevel = 4;
-    window.create(VideoMode(screenWidth, screenHeight), "Grafici fighi di cui non so il nome", sf::Style::Titlebar | sf::Style::Close, settings);
+    window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Titlebar | sf::Style::Close, settings);
 }
 
 void Program::initCircle()
