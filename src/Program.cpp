@@ -36,8 +36,8 @@ void Program::reset()
     currentPoint = 0;
 
     // --------DEBUG-------
-    std::cout << "Numero di punti : " << circle.getPointCount() << "\n"
-              << "Tabellina : " << jumpSize << std::endl;
+    std::cout << "Point cout : " << circle.getPointCount() << "\n"
+              << "Jump size : " << jumpSize << std::endl;
 }
 
 void Program::updateEvents()
