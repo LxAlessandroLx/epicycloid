@@ -36,7 +36,7 @@ void Program::reset()
     currentPoint = 0;
 
     // --------DEBUG-------
-    std::cout << "Point cout : " << circle.getPointCount() << "\n"
+    std::cout << "Point count : " << circle.getPointCount() << "\n"
               << "Jump size : " << jumpSize << std::endl;
 }
 
