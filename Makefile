@@ -4,7 +4,7 @@ SHELL := /bin/bash
 CXX := g++
 CXXFLAGS := -Wall -lsfml-graphics -lsfml-window -lsfml-system
 BUILDDIR := build
-TARGET := main
+TARGET := Epicycloid
 SRC := src/main.cpp src/Program.cpp
 INCLUDE := -I src
 
@@ -15,4 +15,4 @@ time:
 	time $(CXX) -o $(BUILDDIR)/$(TARGET) $(INCLUDE) $(SRC) $(CXXFLAGS)
 
 run:
-	./build/main
+	./build/$(TARGET)
