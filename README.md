@@ -12,12 +12,23 @@ Install SFML framework
 <pre>
 sudo apt install libsfml-dev
 </pre>
+Clone the repository
+<pre>
+git clone https://github.com/LxAlessandroLx/epicycloid.git
+</pre>
+Move into the directory
+<pre>
+cd epicycloid
+</pre>
 Create the build folder
 <pre>
 mkdir build
 </pre>
-And then build the project
+Build the project
 <pre>
 make
+</pre>
+And execute it
+<pre>
 make run
 </pre>
