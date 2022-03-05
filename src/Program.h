@@ -4,8 +4,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#define screenWidth 800
-#define screenHeight 800
+#define screenWidth 810
+#define screenHeight 810
+
+#ifdef _WIN32
+#define CLEAR "cls"
+#else
+#define CLEAR "clear"
+#endif
 
 class Program
 {
@@ -20,12 +26,15 @@ class Program
         unsigned int currentPoint;
         unsigned int jumpSize;
 
-        void initWindow();
-        void initCircle();
+        sf::Clock clockk;
+    float lastTime = 0;
+
+        void initWindow(unsigned int antialiasingLevel);
+        void initCircle(unsigned int points);
         void reset();
 
     public:
-        Program();
+        Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel);
 
         void updateEvents();
         void update();
