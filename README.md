@@ -33,6 +33,17 @@ And execute it
 make run
 </pre>
 
+## Usage
+<pre>
+Usage: 
+ Epicycloid [points] [jump size] [antialiasing level]
+
+Arguments:
+ - points              number of points of the circle (default = 300)
+ - jump size           multiplication table to use (default = 2)
+ - antialiasing level  level of antialiasing to use (default = 0)
+</pre>
+
 ## Screenshots
 ![Screenshot 1](/screenshots/screenshot1.png)
 ![Screenshot 2](/screenshots/screenshot2.png)
