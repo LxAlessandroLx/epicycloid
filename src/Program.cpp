@@ -5,37 +5,40 @@ using sf::Event;
 using sf::VideoMode;
 using sf::Vector2f;
 
-Program::Program() : currentPoint(0), jumpSize(2)
+Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel) 
+    : currentPoint(0), jumpSize(jump)
 {
-    initWindow();
-    initCircle();
+    initWindow(antialiasingLevel);
+    initCircle(points);
     reset();
 
     line[0].color = (Color){0,255,0,150};
     line[1].color = (Color){0,255,0,150};
 }
 
-void Program::initWindow()
+void Program::initWindow(unsigned int antialiasingLevel)
 {
-    settings.antialiasingLevel = 4;
+    settings.antialiasingLevel = antialiasingLevel;
     window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Titlebar | sf::Style::Close, settings);
 }
 
-void Program::initCircle()
+void Program::initCircle(unsigned int points)
 {
     circle.setRadius(400);
-    circle.setPointCount(30);
+    circle.setPointCount(points);
     circle.setFillColor((Color){0,0,0,0});
     circle.setOutlineThickness(1);
     circle.setOutlineColor((Color){0,255,0,150});
+    circle.setPosition(5,5);
 }
+
 void Program::reset()
 {
     window.clear((Color){0,0,0,255});
     window.draw(circle);
     currentPoint = 0;
 
-    // --------DEBUG-------
+    system(CLEAR);
     std::cout << "Point count : " << circle.getPointCount() << "\n"
               << "Jump size : " << jumpSize << std::endl;
 }
@@ -81,8 +84,8 @@ void Program::update()
 
     if (currentPoint < circle.getPointCount())
     {
-        line[0].position = Vector2f(circle.getPoint(currentPoint));
-        line[1].position = Vector2f(circle.getPoint(currentPoint*jumpSize % circle.getPointCount()));
+        line[0].position = Vector2f(circle.getPoint(currentPoint)+(Vector2f){5,5});
+        line[1].position = Vector2f(circle.getPoint(currentPoint*jumpSize % circle.getPointCount())+(Vector2f){5,5});
         window.draw(line, 2, sf::Lines);
         window.display();
         currentPoint++;
@@ -91,7 +94,7 @@ void Program::update()
 
 void Program::render()
 {
-    
+
 }
 
 void Program::run()
