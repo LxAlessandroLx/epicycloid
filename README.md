@@ -38,12 +38,13 @@ make run
 ## Usage
 <pre>
 Usage: 
- Epicycloid [points] [jump size] [antialiasing level]
+ Epicycloid [points] [jump size] [antialiasing level] [radius]
 
 Arguments:
  - points              number of points of the circle (default = 300)
  - jump size           multiplication table to use (default = 2)
  - antialiasing level  level of antialiasing to use (default = 0)
+ - radius              circle radius lenght in pixels (default = 400)
 </pre>
 
 ## Screenshots
