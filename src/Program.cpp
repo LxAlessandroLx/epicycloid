@@ -6,11 +6,11 @@ using sf::VideoMode;
 using sf::Vector2f;
 using sf::Vector2u;
 
-Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel) 
+Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel, unsigned int radius) 
     : currentPoint(0), jumpSize(jump)
 {
     initWindow(antialiasingLevel);
-    initCircle(points);
+    initCircle(points, radius);
     reset();
 
     line[0].color = (Color){0,255,0,150};
@@ -23,9 +23,9 @@ void Program::initWindow(unsigned int antialiasingLevel)
     window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Close | sf::Style::Titlebar, settings);
 }
 
-void Program::initCircle(unsigned int points)
+void Program::initCircle(unsigned int points, unsigned int radius)
 {
-    circle.setRadius(400);
+    circle.setRadius(radius);
     circle.setPointCount(points);
     circle.setFillColor((Color){0,0,0,0});
     circle.setOutlineThickness(1);
