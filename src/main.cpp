@@ -10,7 +10,7 @@ void help()
     " - points              number of points of the circle (default = 300)\n"
     " - jump size           multiplication table to use (default = 2)\n"
     " - antialiasing level  level of antialiasing to use (default = 0)\n"
-    " - radius              circle radius lenght in pixels\n";
+    " - radius              circle radius lenght in pixels (default = 400)\n";
 }
 
 void checkArgument(std::istringstream & stream, unsigned int & argument)
