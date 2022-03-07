@@ -6,6 +6,8 @@ A simple C++ program to draw epicycloids written using the SFML framework for re
 - down arrow to decrease the number of points
 - right arrow to increase the jump size
 - left arrow to decrease the jump size
+- F key to toggle fullscreen
+- ESC to exit program
 
 ## Installation
 Install SFML framework
