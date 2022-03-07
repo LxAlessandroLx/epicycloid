@@ -7,7 +7,7 @@ using sf::Vector2f;
 using sf::Vector2u;
 
 Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel, unsigned int radius) 
-    : currentPoint(0), jumpSize(jump)
+    : screenWidth(radius*2 + 10), screenHeight(radius*2 + 10), currentPoint(0), jumpSize(jump)
 {
     initWindow(antialiasingLevel);
     initCircle(points, radius);
