@@ -30,11 +30,11 @@ class Program
     float lastTime = 0;
 
         void initWindow(unsigned int antialiasingLevel);
-        void initCircle(unsigned int points);
+        void initCircle(unsigned int points, unsigned int radius);
         void reset();
 
     public:
-        Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel);
+        Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel, unsigned int radius);
 
         void updateEvents();
         void update();
