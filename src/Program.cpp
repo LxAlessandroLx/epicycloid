@@ -4,6 +4,7 @@ using sf::Color;
 using sf::Event;
 using sf::VideoMode;
 using sf::Vector2f;
+using sf::Vector2u;
 
 Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasingLevel) 
     : currentPoint(0), jumpSize(jump)
@@ -19,7 +20,7 @@ Program::Program(unsigned int points, unsigned int jump, unsigned int antialiasi
 void Program::initWindow(unsigned int antialiasingLevel)
 {
     settings.antialiasingLevel = antialiasingLevel;
-    window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Titlebar | sf::Style::Close, settings);
+    window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Close | sf::Style::Titlebar, settings);
 }
 
 void Program::initCircle(unsigned int points)
@@ -29,7 +30,7 @@ void Program::initCircle(unsigned int points)
     circle.setFillColor((Color){0,0,0,0});
     circle.setOutlineThickness(1);
     circle.setOutlineColor((Color){0,255,0,150});
-    circle.setPosition(5,5);
+    circle.setPosition((sf::Vector2f){5,5});
 }
 
 void Program::reset()
@@ -70,6 +71,21 @@ void Program::updateEvents()
                     case sf::Keyboard::Right:
                         jumpSize++;
                         reset();
+                        break;
+                    case sf::Keyboard::Escape:
+                        window.close();
+                        break;
+                    case sf::Keyboard::F:
+                        if (window.getSize() != (Vector2u){VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height})
+                        {   
+                            window.create(sf::VideoMode::getDesktopMode(), "Epicycloid", sf::Style::Fullscreen, settings);
+                            reset();
+                        }
+                        else
+                        {
+                            window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Close | sf::Style::Titlebar, settings);
+                            reset();
+                        }
                         break;
                     default: break;
                 }
