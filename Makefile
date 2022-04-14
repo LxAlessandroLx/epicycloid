@@ -1,18 +1,20 @@
 .PHONY: build
 
-SHELL := /bin/bash
 CXX := g++
-CXXFLAGS := -Wall -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS := -Wall 
+SFMLFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 BUILDDIR := build
 TARGET := Epicycloid
-SRC := src/main.cpp src/Program.cpp
+OBJ := src/main.o src/Program.o
 INCLUDE := -I src
 
-build:
-	$(CXX) -o $(BUILDDIR)/$(TARGET) $(INCLUDE) $(SRC) $(CXXFLAGS)
+all: $(TARGET)
 
-time:
-	time $(CXX) -o $(BUILDDIR)/$(TARGET) $(INCLUDE) $(SRC) $(CXXFLAGS)
+$(TARGET): $(OBJ)
+	$(CXX) -o $(BUILDDIR)/$(TARGET) $^ $(SFMLFLAGS)
+
+%.o: %.cpp
+	$(CXX) -c $(INCLUDE) -o $@ $^ $(CXXFLAGS)
 
 run:
 	./build/$(TARGET)
