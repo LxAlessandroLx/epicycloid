@@ -1,23 +1,26 @@
 #include "Program.h"
+
 #include <sstream>
+#include <string.h>
 
 void help()
 {
     std::cout << 
     "Usage: \n"
-    " Epicycloid [points] [jump size] [antialiasing level] [radius]\n\n"
-    "Arguments:\n"
-    " - points              number of points of the circle (default = 300)\n"
-    " - jump size           multiplication table to use (default = 2)\n"
-    " - antialiasing level  level of antialiasing to use (default = 0)\n"
-    " - radius              circle radius lenght in pixels (default = 400)\n";
+    " Epicycloid [options]\n\n"
+    "Options:\n"
+    " -p, --points              number of points of the circle (default = 300)\n"
+    " -j, --jump-size           multiplication table to use (default = 2)\n"
+    " -a, --antialiasing-level  level of antialiasing to use (default = 0)\n"
+    " -r, --radius              circle radius lenght in pixels (default = 400)\n"
+    " -h, --help                display this help\n";
 }
 
 void checkArgument(std::istringstream & stream, unsigned int & argument)
 {
     if (!(stream >> argument) || !stream.eof())
     {
-        std::cerr << "Invalid argument" << std::endl;
+        std::cerr << "ERROR: Invalid argument" << std::endl;
         help();
         exit(EXIT_FAILURE);
     }
@@ -27,27 +30,43 @@ int main(int argc, char *argv[])
 {
     unsigned int points = 300, jump = 2, antialiasingLevel = 0, radius = 400;
 
-    if (argc >= 2)
+    for (int i = 1; i < argc; i += 2)
     {
-        std::istringstream pointsStream(argv[1]);
-        checkArgument(pointsStream, points);
-
-        if (argc >= 3)
+        if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help"))
         {
-            std::istringstream jumpStream(argv[2]);
-            checkArgument(jumpStream, jump);
+            help();
+            return EXIT_SUCCESS;
+        }
+        else if (argv[i+1])
+        {
+            std::istringstream stream(argv[i+1]);
 
-            if (argc >= 4)
+            if (!strcmp(argv[i], "-p") || !strcmp(argv[i], "--points"))
             {
-                std::istringstream antialiasingStream(argv[3]);
-                checkArgument(antialiasingStream, antialiasingLevel);
-
-                if (argc >= 5)
-                {
-                    std::istringstream radiusStream(argv[4]);
-                    checkArgument(radiusStream, radius);
-                }
+                checkArgument(stream, points);
             }
+            else if (!strcmp(argv[i], "-j") || !strcmp(argv[i], "--jump-size"))
+            {
+                checkArgument(stream, jump);
+            }
+            else if (!strcmp(argv[i], "-a") || !strcmp(argv[i], "--antialiasing-level"))
+            {
+                checkArgument(stream, antialiasingLevel);
+            }
+            else if (!strcmp(argv[i], "-r") || !strcmp(argv[i], "--radius"))
+            {
+                checkArgument(stream, radius);
+            }
+            else
+            {
+                std::cerr << "ERROR: '" << argv[i] << "' invalid argument\n";
+                return EXIT_FAILURE;
+            }
+        }
+        else
+        {
+            std::cerr << "ERROR: " << argv[i] << " requires an argument!\nUse --help for more information\n";
+            return EXIT_FAILURE;
         }
     }
 
