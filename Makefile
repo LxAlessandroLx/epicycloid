@@ -15,6 +15,9 @@ $(TARGET): $(OBJ)
 
 %.o: %.cpp
 	$(CXX) -c $(INCLUDE) -o $@ $^ $(CXXFLAGS)
+	
+clean:
+	rm $(OBJ)
 
 run:
 	./build/$(TARGET)
