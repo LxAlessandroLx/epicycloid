@@ -22,10 +22,6 @@ Move into the directory
 <pre>
 cd epicycloid
 </pre>
-Create the build folder
-<pre>
-mkdir build
-</pre>
 Build the project
 <pre>
 make
