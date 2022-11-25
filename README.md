@@ -1,3 +1,5 @@
+<img align="left" src="icon.png" width="128px">
+
 # Epicycloid
 A simple C++ program to draw epicycloids written using the SFML framework for rendering
 
