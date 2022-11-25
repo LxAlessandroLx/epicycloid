@@ -74,5 +74,7 @@ int main(int argc, char *argv[])
 
     program.run();
 
+    system(CLEAR);
+
     return EXIT_SUCCESS;
 }

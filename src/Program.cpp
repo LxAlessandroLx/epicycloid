@@ -103,14 +103,18 @@ void Program::update()
         line[0].position = Vector2f(circle.getPoint(currentPoint)+(Vector2f){5,5});
         line[1].position = Vector2f(circle.getPoint(currentPoint*jumpSize % circle.getPointCount())+(Vector2f){5,5});
         window.draw(line, 2, sf::Lines);
-        window.display();
+        currentPoint++;
+    }
+    else if (currentPoint == circle.getPointCount())
+    {
+        render();
         currentPoint++;
     }
 }
 
 void Program::render()
 {
-
+    window.display();
 }
 
 void Program::run()
@@ -118,6 +122,5 @@ void Program::run()
     while (window.isOpen())
     {
         update();
-        render();
     }
 }
