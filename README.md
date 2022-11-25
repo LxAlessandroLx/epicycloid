@@ -50,3 +50,6 @@ Options:
 ![Screenshot 3](/screenshots/screenshot3.png)
 ![Screenshot 4](/screenshots/screenshot4.png)
 ![Screenshot 5](/screenshots/screenshot5.png)
+
+---
+Copyright (C) 2022 Alessandro Chiozza - chiozzalessandro@gmail.com
