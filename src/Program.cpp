@@ -61,12 +61,18 @@ void Program::updateEvents()
                         reset();
                         break;
                     case sf::Keyboard::Down:
-                        circle.setPointCount(circle.getPointCount()-1);
-                        reset();
+                        if (circle.getPointCount() > 3)
+                        {
+                            circle.setPointCount(circle.getPointCount()-1);
+                            reset();
+                        }
                         break;
                     case sf::Keyboard::Left:
-                        jumpSize--;
-                        reset();
+                        if (jumpSize > 2)
+                        {
+                            jumpSize--;
+                            reset();
+                        }
                         break;
                     case sf::Keyboard::Right:
                         jumpSize++;
@@ -76,16 +82,12 @@ void Program::updateEvents()
                         window.close();
                         break;
                     case sf::Keyboard::F:
-                        if (window.getSize() != (Vector2u){VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height})
-                        {   
+                        if (window.getSize() != (Vector2u){VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height}) 
                             window.create(sf::VideoMode::getDesktopMode(), "Epicycloid", sf::Style::Fullscreen, settings);
-                            reset();
-                        }
                         else
-                        {
                             window.create(VideoMode(screenWidth, screenHeight), "Epicycloid", sf::Style::Close | sf::Style::Titlebar, settings);
-                            reset();
-                        }
+
+                        reset();
                         break;
                     default: break;
                 }
