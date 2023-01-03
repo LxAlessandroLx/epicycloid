@@ -1,5 +1,8 @@
 #include "Program.h"
 
+#include <chrono>
+#include <thread>
+
 using sf::Color;
 using sf::Event;
 using sf::VideoMode;
@@ -111,6 +114,10 @@ void Program::update()
     {
         render();
         currentPoint++;
+    }
+    else
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
